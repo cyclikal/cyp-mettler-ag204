@@ -1,2 +1,2 @@
-# cyp-random
-Example Cyckei Plugin Package, Generates Random Numbers
+# cyp-mettler-ag204
+Cyckei Plugin Package, Reads Weight from Mettler-Toledo AG204 Scale
