@@ -9,7 +9,7 @@ setuptools.setup(
     version="0.1.dev1",
     author="Gabriel Ewig",
     author_email="gabriel@cyclikal.com",
-    description=short,
+    description=shrt,
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/cyclikal/cyp-random",
