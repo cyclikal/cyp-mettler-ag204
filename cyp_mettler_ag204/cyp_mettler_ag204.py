@@ -1,13 +1,15 @@
 import logging
 from random import randint
 from cyckei.plugins import cyp_base
+import os.path
 
 logger = logging.getLogger("cyckei")
 
 
 class MettlerController(cyp_base.PluginController):
     def __init__(self):
-        super().__init__()
+        base_path = os.path.join(os.path.dirname(__file__), "..")
+        super().__init__("mettler-ag204", base_path)
 
     def get_sources(self):
         """
