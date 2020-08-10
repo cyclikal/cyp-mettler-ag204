@@ -36,7 +36,7 @@ class PluginController(cyp_base.BaseController):
         """
         sources = {}
         for scale in config_sources:
-            scale = MettlerLogger(PORT=scale["port"])
+            scale = MettlerLogger(self.logger, PORT=scale["port"])
             sources[scale.name] = scale
 
         return sources
@@ -44,6 +44,7 @@ class PluginController(cyp_base.BaseController):
 
 class MettlerLogger(object):
     def __init__(self,
+                 logger,
                  ACCEPTABLE_STATUS=['S', 'SD'],
                  TIMEFORMAT='%Y-%m-%d %H:%M:%S.%f',
                  PORT=None,
@@ -58,6 +59,7 @@ class MettlerLogger(object):
                  DENSITY=0.963):
 
         self.name = f"Mettler {PORT}"
+        self.logger = logger
         timestamp_start = time.time()
         date_start = datetime.datetime.fromtimestamp(timestamp_start)
         date_start_str = date_start.strftime(TIMEFORMAT)
@@ -161,7 +163,8 @@ class MettlerLogger(object):
 
         except (serial.SerialException) as e:
             if self.options['verbosity'] > 0:
-                print('Failed with error: %s' % e)
+                self.logger.error('Could not get Mettler data: %s' % e)
+                weight = 0
 
         return weight
 
