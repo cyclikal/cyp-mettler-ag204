@@ -2,11 +2,27 @@ import serial
 import datetime
 import time
 import re
+import json
 from cyckei.plugins import cyp_base
 
 EOL = b'\r\n'
 weight_conversion = {'g': 1, 'mg': 0.001, 'kg': 1000., 'oz': 0.0352739619,
                      'lb': 0.00220462262}
+
+default_config = json.loads(
+    """
+    {
+        "name": "mettler_ag204",
+        "enabled": true,
+        "sources": [
+            {
+              "port": "COM3",
+              "meta": null
+            }
+        ]
+    }
+    """
+)
 
 
 class PluginController(cyp_base.BaseController):
@@ -170,5 +186,6 @@ class MettlerLogger(object):
 
 
 if __name__ == "__main__":
-    controller = PluginController()
+    sources = default_config["sources"]
+    controller = PluginController(sources)
     print(cyp_base.read_all(controller))
