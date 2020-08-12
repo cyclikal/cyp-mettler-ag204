@@ -118,6 +118,8 @@ class MettlerLogger(object):
         open a connection, send command, read output, then close.
         return result. Returns Non on failure
         '''
+        self.logger.debug(
+            f"Sending {command} to {self.options['serial']['port']}")
         ser = serial.Serial(port=str(self.options['serial']['port']),
                             baudrate=self.options['serial']['baudrate'],
                             bytesize=self.options['serial']['bytesize'],
@@ -129,6 +131,8 @@ class MettlerLogger(object):
         ser.write(command + EOL)
         s = ser.readline().decode('utf-8')
         ser.close()
+        self.logger.debug(
+            f"Got value of {s} from {self.options['serial']['port']}")
         return s
 
     def get_balance_model(self):
@@ -164,6 +168,7 @@ class MettlerLogger(object):
                 weight in grams or None on failure
         '''
 
+        self.logger.debug(f"Reading {self.options['serial']['port']}")
         weight = None
         weight_d = {'Status': None, 'WeightValue': None, 'Unit': None}
         try:
@@ -182,6 +187,8 @@ class MettlerLogger(object):
                 self.logger.error('Could not get Mettler data: %s' % e)
                 weight = 0
 
+        self.logger.debug(
+            f"Weight of {self.options['serial']['port']} is {weight_d}")
         return weight
 
 
