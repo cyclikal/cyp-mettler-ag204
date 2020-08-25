@@ -125,7 +125,7 @@ class MettlerLogger(object):
                             bytesize=self.options['serial']['bytesize'],
                             parity=self.options['serial']['parity'],
                             xonxoff=self.options['serial']['xonxoff'],
-                            timeout=10)
+                            timeout=5)
 
         command = command.encode('utf-8')
         ser.write(command + EOL)
