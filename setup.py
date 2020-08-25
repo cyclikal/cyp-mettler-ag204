@@ -6,7 +6,7 @@ shrt = "Cyckei Plugin Package, Reads Weight from Mettler-Toledo AG204 Scale"
 
 setuptools.setup(
     name="cyp-mettler-ag204",
-    version="0.1.dev1",
+    version="1.0",
     author="Gabriel Ewig",
     author_email="gabriel@cyclikal.com",
     description=shrt,
