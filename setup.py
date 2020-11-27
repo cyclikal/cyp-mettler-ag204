@@ -21,4 +21,7 @@ setuptools.setup(
         "Topic :: Scientific/Engineering",
     ],
     python_requires='>=3.6',
+    install_requires=[
+        "serial"
+    ],
 )
