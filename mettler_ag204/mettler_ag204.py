@@ -16,7 +16,7 @@ default_config = json.loads(
         "enabled": true,
         "sources": [
             {
-              "port": "COM5",
+              "port": "COM6",
               "meta": null
             }
         ]

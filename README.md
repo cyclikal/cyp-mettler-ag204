@@ -37,7 +37,8 @@ After installing the plugin you must add configuration so that can setup and use
 To do so, add the following entry to the ``plugins`` list Cyckei's main ``config.json``.
 
     {
-        "name": "mettler_ag204",
+        "name": "My Mettler",
+        "module": "mettler_ag204",
         "enabled": true,
         "sources": [
             {
